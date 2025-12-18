@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8th Pay Commission Salary Calculator</title>
+    <style>
+        /* CSS STYLES */
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --success-color: #10b981;
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 550px;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 1.75rem;
+        }
+
+        .header p {
+            color: #64748b;
+            margin-top: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .results {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed #e2e8f0;
+            display: none;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .result-item .label {
+            color: #475569;
+        }
+
+        .result-item .value {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .increase {
+            color: var(--success-color) !important;
+        }
+
+        .footer-links {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .footer-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>8th Pay Commission</h1>
+        <p>Salary & Pension Estimator</p>
+    </div>
+
+    <div class="form-group">
+        <label for="basicPay">7th CPC Basic Pay (₹)</label>
+        <input type="number" id="basicPay" placeholder="Enter your current basic pay" required>
+    </div>
+
+    <div class="form-group">
+        <label for="fitmentFactor">Select Fitment Factor</label>
+        <select id="fitmentFactor">
+            <option value="1.92">1.92 (Minimum Projection)</option>
+            <option value="2.57">2.57 (7th CPC standard)</option>
+            <option value="2.86" selected>2.86 (Expected)</option>
+            <option value="3.00">3.00 (Proposed by unions)</option>
+        </select>
+    </div>
+
+    <button class="btn" onclick="calculate()">Calculate Revised Pay</button>
+
+    <div id="results" class="results">
+        <div class="result-item">
+            <span class="label">New Basic Pay:</span>
+            <span class="value" id="resNewBasic">₹0</span>
+        </div>
+        <div class="result-item">
+            <span class="label">Total Hike:</span>
+            <span class="value increase" id="resIncrease">₹0</span>
+        </div>
+        <p style="font-size: 0.8rem; color: #94a3b8; font-style: italic;">*Projections are indicative based on expected 8th CPC norms.</p>
+    </div>
+
+    <div class="footer-links">
+        <a href="https://play.google.com/store/apps/details?id=com.sarjalwin.paycommissionsalarycalculator" target="_blank">📲 Mobile App</a>
+        <a href="https://paycalculatorguide.blogspot.com/" target="_blank">🌐 Official Website</a>
+    </div>
+</div>
+
+<script>
+    /* JAVASCRIPT LOGIC */
+    function calculate() {
+        const basic = parseFloat(document.getElementById('basicPay').value);
+        const fitment = parseFloat(document.getElementById('fitmentFactor').value);
+
+        if (!basic || basic <= 0) {
+            alert("Please enter a valid Basic Pay amount.");
+            return;
+        }
+
+        // Logic: New Basic = Current Basic * Fitment Factor
+        const newBasic = Math.round(basic * fitment);
+        const hike = newBasic - basic;
+
+        // Display results
+        document.getElementById('resNewBasic').innerText = "₹" + newBasic.toLocaleString('en-IN');
+        document.getElementById('resIncrease').innerText = "₹" + hike.toLocaleString('en-IN');
+        
+        // Show result box
+        document.getElementById('results').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
