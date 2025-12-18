@@ -49,6 +49,8 @@ Calculating the 8th Pay Commission salary involves a specific mathematical logic
 | Platform | Link |
 | :--- | :--- |
 | **Android App** | [Download on Google Play Store](https://play.google.com/store/apps/details?id=com.sarjalwin.paycommissionsalarycalculator) |
+
+| **Web tool** | [Visit 8th Pay Salary Calculator ](https://8thpaycommissioncalculatoronline.blogspot.com/) |
 | **Web Portal** | [Visit Pay Calculator Guide (Blog)](https://paycalculatorguide.blogspot.com/) |
 
 ---
