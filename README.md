@@ -12,6 +12,11 @@ An advanced financial tool designed for Indian Central Government employees and 
 
 As the Indian government moves closer to the implementation of the **8th Pay Commission**, millions of central government employees and pensioners are looking for clarity. With inflation rising, the 8th CPC is expected to provide much-needed financial relief and a significant jump in the basic pay structure.
 
+| **Android App** | [Download on Google Play Store](https://play.google.com/store/apps/details?id=com.sarjalwin.paycommissionsalarycalculator) |
+
+| **Web tool** | [Visit 8th Pay Salary Calculator ](https://8thpaycommissioncalculatoronline.blogspot.com/) |
+
+
 ### What is the 8th Pay Commission?
 The Pay Commission is a specialized body set up by the Government of India to review and recommend changes to the salary structure, allowances, and benefits for its employees. Traditionally, these commissions are established every 10 years. With the 7th CPC ending its cycle, the 8th Pay Commission is the next big milestone for the Indian workforce to ensure wages keep pace with inflation and the cost of living.
 
